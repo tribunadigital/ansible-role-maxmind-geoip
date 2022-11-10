@@ -55,3 +55,9 @@ maxmind_geoip_geoipupdate_product_ids:
   - 'GeoLite2-City'
   - 'GeoLite2-Country'
 maxmind_geoip_configuration_folder_path: "{{ _maxmind_geoip_configuration_folder_path }}"
+
+# Cron
+maxmind_geoip_cron_minute: 0
+maxmind_geoip_cron_hour: 12
+maxmind_geoip_cron_dow: "*"
+

@@ -162,6 +162,7 @@ None
 
 ``` yaml
 - hosts: servers
+  become: True
   roles:
     - { role: Temelio.maxmind-geoip }
 ```
