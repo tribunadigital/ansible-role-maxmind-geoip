@@ -42,6 +42,6 @@
     hour: "{{ maxmind_geoip_cron_hour }}"
     weekday: "{{ maxmind_geoip_cron_dow }}"
     user: 'root'
-    job: '/usr/local/bin/geoipupdate'
+    job: "{{ maxmind_geoip_update_binary }} -f {{ maxmind_geoip_configuration_folder_path }}/geoipupdate.conf"
     cron_file: geoipupdate
   when: maxmind_geoip_enable_cron | bool

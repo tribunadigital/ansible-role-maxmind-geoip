@@ -31,5 +31,5 @@
 
 
 - name: 'UPDATE | Run databases update'
-  command: '/usr/bin/geoipupdate -f {{ maxmind_geoip_configuration_folder_path }}/geoipupdate.conf'
+  command: '{{ maxmind_geoip_update_binary }} -f {{ maxmind_geoip_configuration_folder_path }}/geoipupdate.conf'
   changed_when: 'maxmind_geoip_geoipupdate_changed_when'
