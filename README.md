@@ -120,8 +120,8 @@ maxmind_geoip_configuration_folder_path: "{{ _maxmind_geoip_configuration_folder
 _maxmind_geoip_system_prerequisites:
   - name: 'ca-certificates'
 
-_maxmind_geoip_databases_folder: '/usr/share/GeoIP/'
-_maxmind_geoip_configuration_folder_path: '/etc/geoip/'
+_maxmind_geoip_databases_folder: '/usr/share/GeoIP'
+_maxmind_geoip_configuration_folder_path: '/etc/geoip'
 ```
 
 ### Specific Debian distributions variables
