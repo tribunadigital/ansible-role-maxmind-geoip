@@ -35,13 +35,13 @@
     owner: 'root'
   when: maxmind_geoip_enable_cron | bool
 
-- name: 'INSTALL | CRON | automate GeoIP Update with cron'
+- name: 'INSTALL | CRON | Manage automate GeoIP Update with cron'
   cron:
     name: "geopipupdate"
+    state: "{{ maxmind_geoip_enable_cron | bool | ternary('present', 'absent')  }}"
     minute: "{{ maxmind_geoip_cron_minute }}"
     hour: "{{ maxmind_geoip_cron_hour }}"
     weekday: "{{ maxmind_geoip_cron_dow }}"
     user: 'root'
     job: "{{ maxmind_geoip_update_binary }} -f {{ maxmind_geoip_configuration_folder_path }}/geoipupdate.conf"
     cron_file: geoipupdate
-  when: maxmind_geoip_enable_cron | bool
