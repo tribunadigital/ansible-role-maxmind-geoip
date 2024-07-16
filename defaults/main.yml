@@ -62,3 +62,4 @@ maxmind_geoip_cron_minute: 0
 maxmind_geoip_cron_hour: 12
 maxmind_geoip_cron_dow: "*"
 
+maxmind_geoip_signing_key: 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xf44b38ce3db1bf64b61dbd28de1997dcde742afa'

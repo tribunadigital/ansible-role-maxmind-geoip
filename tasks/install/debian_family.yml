@@ -11,14 +11,18 @@
     cache_valid_time: "{{ maxmind_geoip_package_cache_valid_time }}"
   with_items: "{{ maxmind_geoip_system_prerequisites }}"
 
+- name: 'INSTALL | APT | Add MaxMind GeoIP repositories'
+  block:
+    - name: MaxMind | add key
+      ansible.builtin.get_url:
+        url: "{{ maxmind_geoip_signing_key}}"
+        dest: /etc/apt/keyrings/maxmind.asc
+      changed_when: false
 
-- name: 'INSTALL | APT | Manage repositories'
-  apt_repository:
-    codename: "{{ item.codename | default(omit) }}"
-    repo: "{{ item.repo }}"
-    state: "{{ item.state | default('present') }}"
-  with_items: "{{ maxmind_geoip_repositories }}"
-
+    - name: MaxMind | apt source
+      ansible.builtin.apt_repository:
+        repo: "deb [signed-by=/etc/apt/keyrings/maxmind.asc] https://ppa.launchpadcontent.net/maxmind/ppa/ubuntu {{ ansible_distribution_release }} main"
+        state: present
 
 - name: 'INSTALL | APT | Install MaxMind GeoIP packages'
   apt:
